@@ -1,6 +1,9 @@
 package com.raposo.gterandroid;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +19,8 @@ public class TerceirizadoActivity extends AppCompatActivity {
     private TextInputEditText tercEtNome;
     private TextInputEditText tercEtCpf;
     private TextInputEditText tercEtDataNascimento;
+
+    private Button tercBtCancelar;
 
 
     @Override
@@ -35,6 +40,19 @@ public class TerceirizadoActivity extends AppCompatActivity {
 
         tercEtDataNascimento = findViewById(R.id.tercEtDataNascimento);
         Mascara.data(tercEtDataNascimento);
+
+        tercBtCancelar = findViewById(R.id.tercBtCancelar);
+        tercBtCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
+
+
+
 
     }
 }
