@@ -19,6 +19,7 @@
         android:textAlignment="center"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:accessibilityHeading="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,7 +50,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tercEtNome"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="60"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -61,7 +64,9 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tercEtCpf"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLength="14" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -106,7 +111,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:accessibilityPaneTitle="Selecione o sexo">
 
                         <RadioButton
                             android:id="@+id/tercRbMasculino"
@@ -155,6 +161,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginEnd="4dp"
             android:text="Cancelar" />
 
         <Button
@@ -162,6 +169,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_marginStart="4dp"
             android:text="Salvar" />
     </LinearLayout>
 
