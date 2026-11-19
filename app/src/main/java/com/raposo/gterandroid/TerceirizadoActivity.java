@@ -98,21 +98,9 @@ public class TerceirizadoActivity extends AppCompatActivity {
             return;
         }
 
-        try {
-            Terceirizado terceizado = new Terceirizado(stNome,stCpf,ldDataNascimento,stCodSexo,stEmail);
-        } catch (Exception e) {
-            Toast.makeText(TerceirizadoActivity.this,e.getMessage(),Toast.LENGTH_LONG).show();
-            return;
-        }
 
         // DOTO Continua Por aqui!
         Toast.makeText(TerceirizadoActivity.this,"Aguarde o fim da implementação",Toast.LENGTH_LONG).show();
-
-
-
-
-
-
 
 
 

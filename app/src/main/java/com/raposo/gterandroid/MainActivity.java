@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 3. Cria a Intent para navegar da tela atual (MainActivity) para a tela Terceirizado
-                Intent intent = new Intent(MainActivity.this, TerceirizadoActivity.class);
+                Intent intent = new Intent(MainActivity.this, OrgaoActivity.class);
 
                 // 4. Inicia a nova tela
                 startActivity(intent);
