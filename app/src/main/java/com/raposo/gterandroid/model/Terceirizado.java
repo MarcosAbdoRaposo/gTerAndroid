@@ -6,7 +6,7 @@ import com.squareup.moshi.JsonClass;
 import java.util.Date;
 import java.util.UUID;
 
-@JsonClass(generateAdapter = true)
+
 public class Terceirizado {
 
     @Json(name = "ideTerceirizado")
@@ -42,10 +42,13 @@ public class Terceirizado {
     @Json(name = "numCep")
     private String numCep;
 
+    @Json(name = "desEmail")
+    private String desEmail;
+
     public Terceirizado() {
     }
 
-    public Terceirizado(String ideTerceirizado, String nomTerceirizado, String numCPF, Date datNascimento, String codSexo, String nomLogradouro, String nomBairro, String nomCidade, String sigUF, String nomPais, String numCep) {
+    public Terceirizado(String ideTerceirizado, String nomTerceirizado, String numCPF, Date datNascimento, String codSexo, String nomLogradouro, String nomBairro, String nomCidade, String sigUF, String nomPais, String numCep, String desEmail) {
         this.ideTerceirizado = ideTerceirizado;
         this.nomTerceirizado = nomTerceirizado;
         this.numCPF = numCPF;
@@ -57,6 +60,7 @@ public class Terceirizado {
         this.sigUF = sigUF;
         this.nomPais = nomPais;
         this.numCep = numCep;
+        this.desEmail = desEmail;
     }
 
     public String getIdeTerceirizado() {
@@ -145,5 +149,13 @@ public class Terceirizado {
 
     public void setNumCep(String numCep) {
         this.numCep = numCep;
+    }
+
+    public String getDesEmail() {
+        return desEmail;
+    }
+
+    public void setDesEmail(String desEmail) {
+        this.desEmail = desEmail;
     }
 }

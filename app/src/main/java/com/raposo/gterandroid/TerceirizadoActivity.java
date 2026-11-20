@@ -7,7 +7,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -15,24 +14,26 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.raposo.gterandroid.components.Mascara;
-import com.raposo.gterandroid.model.Terceirizado;
 import com.raposo.gterandroid.util.DateUtils;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class TerceirizadoActivity extends AppCompatActivity {
 
-    private TextInputEditText tercEtNome;
-    private TextInputEditText tercEtCpf;
-    private TextInputEditText tercEtDataNascimento;
+    private TextInputEditText etTercNomTerceirizado;
+    private TextInputEditText etTercNumCpf;
+    private TextInputEditText etTercDataNascimento;
 
-    private RadioGroup tercRgSexo;
-    private TextInputEditText tercEtEmail;
+    private RadioGroup rgTercCodSexo;
+    private TextInputEditText etTercDesEmail;
 
 
     private Button tercBtCancelar;
 
     private Button tercBtSalvar;
+
+    private UUID ideTerceirizado;
 
 
     @Override
@@ -46,18 +47,30 @@ public class TerceirizadoActivity extends AppCompatActivity {
             return insets;
         });
 
-        tercEtNome = findViewById(R.id.tercEtNome);
-        tercEtCpf = findViewById(R.id.tercEtCpf);
-        Mascara.cpf(tercEtCpf);
+        etTercNomTerceirizado = findViewById(R.id.etTercNomTerceirizado);
+        etTercNumCpf = findViewById(R.id.etTercNumCpf);
+        Mascara.cpf(etTercNumCpf);
 
-        tercEtDataNascimento = findViewById(R.id.tercEtDataNascimento);
-        Mascara.data(tercEtDataNascimento);
+        etTercDataNascimento = findViewById(R.id.etTercDataNascimento);
+        Mascara.data(etTercDataNascimento);
 
-        tercRgSexo = findViewById(R.id.tercRgSexo);
+        rgTercCodSexo = findViewById(R.id.rgTercCodSexo);
 
-        tercEtEmail = findViewById(R.id.tercEdtEmail);
+        etTercDesEmail = findViewById(R.id.etTercDesEmail);
 
         tercBtCancelar = findViewById(R.id.tercBtCancelar);
+
+        // Obtem os valores transmitidos pela tela de TerceirizadosContrato
+
+        ideTerceirizado = UUID.fromString(getIntent().getStringExtra("stIdeTerceirizado"));
+        etTercNomTerceirizado.setText(getIntent().getStringExtra("stNomTerceirizado"));
+        etTercNumCpf.setText(getIntent().getStringExtra("stNumCPF"));
+        //intent.putExtra("stNumCPF", terceirizado.getNumCPF());
+        //intent.putExtra("stCodSexo",terceirizado.getCodSexo());
+        //intent.putExtra("dtDatNascimento",terceirizado.getDatNascimento().toString()); // Formato ISO
+
+
+
         tercBtCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,12 +89,12 @@ public class TerceirizadoActivity extends AppCompatActivity {
 
 
     private void salvarTerceirizado () {
-        String stNome = tercEtNome.getText().toString();
-        String stCpf = tercEtCpf.getText().toString();
-        String stDatNascimento = tercEtDataNascimento.getText().toString();
-        String stEmail = tercEtEmail.getText().toString();
+        String stNomTerceirizado = etTercNomTerceirizado.getText().toString();
+        String stCpf = etTercNumCpf.getText().toString();
+        String stDatNascimento = etTercDataNascimento.getText().toString();
+        String stEmail = etTercDesEmail.getText().toString();
         String stCodSexo;
-        int idSexoSelecionado = tercRgSexo.getCheckedRadioButtonId();
+        int idSexoSelecionado = rgTercCodSexo.getCheckedRadioButtonId();
         if (idSexoSelecionado == -1) {
             stCodSexo = "não informado"; // Vei gerar erro no Construtor
         } else {

@@ -13,10 +13,14 @@ public interface TerceirizadoService {
     Call<List<Terceirizado>> listarTodos();
 
     @GET("terceirizado/{id}")
-    Call<Terceirizado> buscarPorId(@Path("id") UUID id);
+    Call<Terceirizado> buscarPorId(@Path("id") String id);
 
     @GET("terceirizado/cpf/{numCPF}")
     Call<Terceirizado> buscarPorCpf(@Path("numCPF") String numCPF);
+
+    @GET("terceirizado/contrato/{ideContrato}")
+    Call<List<Terceirizado>> buscarPorContrato(@Path("ideContrato") String ideContrato);
+
 
     @GET("terceirizado/buscar")
     Call<List<Terceirizado>> buscarPorNome(@Query("nome") String nome);
@@ -25,8 +29,8 @@ public interface TerceirizadoService {
     Call<Terceirizado> salvar(@Body Terceirizado terceirizado);
 
     @PUT("terceirizado/{id}")
-    Call<Terceirizado> atualizar(@Path("id") UUID id, @Body Terceirizado terceirizado);
+    Call<Terceirizado> atualizar(@Path("id") String id, @Body Terceirizado terceirizado);
 
     @DELETE("terceirizado/{id}")
-    Call<Void> deletar(@Path("id") UUID id);
+    Call<Void> deletar(@Path("id") String id);
 }

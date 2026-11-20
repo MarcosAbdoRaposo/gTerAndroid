@@ -82,9 +82,9 @@ public class ContratoActivity extends AppCompatActivity {
 
     // Carrega o listView com os cotratos deste Orgao
     private void listarContratos(UUID ideOrgao) {
-        Call<List<Contrato>> servicoRest = contratoService.listarTodos();
+        //Call<List<Contrato>> servicoRest = contratoService.listarTodos();
 
-        // Call<List<Contrato>> servicoRest = contratoService.buscarPorOrgao(ideOrgao.toString());
+        Call<List<Contrato>> servicoRest = contratoService.buscarPorOrgao(ideOrgao.toString());
         servicoRest.enqueue(new Callback<List<Contrato>>() {
             @Override
             public void onResponse(Call<List<Contrato>> call, Response<List<Contrato>> response) {
@@ -137,10 +137,10 @@ public class ContratoActivity extends AppCompatActivity {
     }
 
     private void telaTerceirizadosContrato(Contrato contratoSelecionado) {
-        Intent intent = new Intent(ContratoActivity.this, TerceirizadoActivity.class);
-        intent.putExtra("stIdeContrato ", contratoSelecionado.getIdeContrato().toString());
-        intent.putExtra("stAnoContrato ", contratoSelecionado.getAnoContrato());
-        intent.putExtra("stNumContrato ", contratoSelecionado.getAnoContrato());
+        Intent intent = new Intent(ContratoActivity.this, TerceirizadosContratoActivity.class);
+        intent.putExtra("stIdeContrato", contratoSelecionado.getIdeContrato().toString());
+        intent.putExtra("inAnoContrato", contratoSelecionado.getAnoContrato());
+        intent.putExtra("inNumContrato", contratoSelecionado.getNumContrato());
         intent.putExtra("stNomFornecedor",contratoSelecionado.getFornecedor().getNomFornecedor());
         startActivity(intent);
     }

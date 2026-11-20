@@ -8,21 +8,19 @@
     android:fitsSystemWindows="true"
     tools:context=".TerceirizadoActivity">
 
-    <TextView
-        android:id="@+id/tercTvCabecalho"
-        android:layout_width="0dp"
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/mtbTercCabecalho"
+        android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="60dp"
-        android:text="Terceirizado"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:accessibilityHeading="true"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Terceirizado"
+        app:titleCentered="true"
+        app:titleTextColor="#FFFFFF" />
 
     <ScrollView
         android:id="@+id/tercSvFormulario"
@@ -31,28 +29,28 @@
         app:layout_constraintBottom_toTopOf="@id/tercLLRodape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tercTvCabecalho">
+        app:layout_constraintTop_toBottomOf="@+id/mtbTercCabecalho">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp">
+            android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tercTILNome"
+                android:id="@+id/tilTercNome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Nome">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tercEtNome"
+                    android:id="@+id/etTercNomTerceirizado"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:maxLength="60"/>
+                    android:maxLength="60" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -62,7 +60,7 @@
                 android:hint="CPF">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tercEtCpf"
+                    android:id="@+id/etTercNumCpf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
@@ -76,7 +74,7 @@
                 android:hint="Data de Nascimento">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tercEtDataNascimento"
+                    android:id="@+id/etTercDataNascimento"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="date"
@@ -84,10 +82,10 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.card.MaterialCardView
+                style="?attr/materialCardViewOutlinedStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                style="?attr/materialCardViewOutlinedStyle"
                 app:strokeColor="#79747E"
                 app:strokeWidth="1dp">
 
@@ -102,27 +100,27 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Sexo"
-                        android:textSize="12sp"
                         android:textColor="?attr/colorPrimary"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
 
                     <RadioGroup
-                        android:id="@+id/tercRgSexo"
+                        android:id="@+id/rgTercCodSexo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        android:orientation="horizontal"
-                        android:accessibilityPaneTitle="Selecione o sexo">
+                        android:accessibilityPaneTitle="Selecione o sexo"
+                        android:orientation="horizontal">
 
                         <RadioButton
-                            android:id="@+id/tercRbMasculino"
+                            android:id="@+id/rbTercMasculino"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Masculino" />
 
                         <RadioButton
-                            android:id="@+id/tercRbFeminino"
+                            android:id="@+id/rbTercFeminino"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -139,7 +137,7 @@
                 android:hint="e-Mail">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tercEdtEmail"
+                    android:id="@+id/etTercDesEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress" />
