@@ -8,7 +8,7 @@
     tools:context=".OrgaoActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/tbOrgaoCabecalho"
+        android:id="@+id/mtbOrgaoCabecalho"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -17,6 +17,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:navigationContentDescription="Voltar"
+        app:navigationIcon="@drawable/ic_arrow_back_24"
+        app:navigationIconTint="@android:color/white"
         app:subtitle="Órgãos"
         app:subtitleCentered="true"
         app:subtitleTextColor="#FFFFFF"
@@ -26,9 +29,10 @@
 
     <ListView
         android:id="@+id/lvOrgaoOrgaos"
-        android:layout_width="409dp"
-        android:layout_height="665dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tbOrgaoCabecalho" />
+        app:layout_constraintTop_toBottomOf="@+id/mtbOrgaoCabecalho" />
 </androidx.constraintlayout.widget.ConstraintLayout>

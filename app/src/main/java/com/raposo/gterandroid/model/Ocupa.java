@@ -1,5 +1,6 @@
 package com.raposo.gterandroid.model;
 
+import com.raposo.gterandroid.components.Data;
 import com.squareup.moshi.Json;
 import com.squareup.moshi.JsonClass;
 import java.util.Date;
@@ -25,6 +26,13 @@ public class Ocupa {
 
     @Json(name = "datFim")
     private Date datFim;
+
+    @Json(name = "desLotacao")
+    private Date desLotacao;
+
+    @Json(name = "desLocalizacao")
+    private Date desLocalizacao;
+
 
     public Ocupa() {
     }
@@ -83,6 +91,11 @@ public class Ocupa {
         return datInicio;
     }
 
+    public String getDatInicioBr(){
+        return Data.dateToBr(datInicio);
+    }
+
+
     public void setDatInicio(Date datInicio) {
         this.datInicio = datInicio;
     }
@@ -91,7 +104,28 @@ public class Ocupa {
         return datFim;
     }
 
+    public String getDatFimBr() {
+        return Data.dateToBr(datFim);
+    }
+
     public void setDatFim(Date datFim) {
         this.datFim = datFim;
+    }
+
+
+    public Date getDesLotacao() {
+        return desLotacao;
+    }
+
+    public void setDesLotacao(Date desLotacao) {
+        this.desLotacao = desLotacao;
+    }
+
+    public Date getDesLocalizacao() {
+        return desLocalizacao;
+    }
+
+    public void setDesLocalizacao(Date desLocalizacao) {
+        this.desLocalizacao = desLocalizacao;
     }
 }

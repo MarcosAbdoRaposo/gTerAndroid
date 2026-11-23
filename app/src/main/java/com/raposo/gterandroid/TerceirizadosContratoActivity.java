@@ -18,6 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.raposo.gterandroid.client.RetrofitClient;
+import com.raposo.gterandroid.components.Data;
 import com.raposo.gterandroid.model.Contrato;
 import com.raposo.gterandroid.model.Terceirizado;
 import com.raposo.gterandroid.service.TerceirizadoService;
@@ -42,7 +43,7 @@ public class TerceirizadosContratoActivity extends AppCompatActivity {
 
     private List<Terceirizado> listaTerceirizados;
 
-    private UUID ideContrato; // Contratoo selecionado na tela de Contratos
+    private UUID ideContrato; // Contrato selecionado na tela de Contratos
     private String nomFornecedor ; // Nome do Fornecedor do Contrato
 
     private int anoContrato;  // Ano do Contrato
@@ -65,8 +66,6 @@ public class TerceirizadosContratoActivity extends AppCompatActivity {
         terceirizadoService = RetrofitClient.getRetrofit().create(TerceirizadoService.class);
 
         // Obtem os valores passados na Intent Orgao
-
-
 
         ideContrato = UUID.fromString(getIntent().getStringExtra("stIdeContrato"));
         nomFornecedor = getIntent().getStringExtra("stNomFornecedor");
@@ -92,6 +91,11 @@ public class TerceirizadosContratoActivity extends AppCompatActivity {
                 telaTerceirizados(terceirizadoSelecionado);
             }
         });
+
+        // Manda para tela anterior
+        mtbTerContCabecalho.setNavigationOnClickListener(v->
+                getOnBackPressedDispatcher().onBackPressed()
+        );
     }
 
 
@@ -130,7 +134,7 @@ public class TerceirizadosContratoActivity extends AppCompatActivity {
 
                                 // Linha 2: Data E Valor
 
-                                text2.setText("CPF: "+terceirizado.getNumCPF());
+                                text2.setText("CPF: "+terceirizado.getNumCPFFormatado());
                             }
                             return view;
                         }
@@ -151,11 +155,13 @@ public class TerceirizadosContratoActivity extends AppCompatActivity {
 
     private void telaTerceirizados(Terceirizado terceirizado) {
         Intent intent = new Intent(TerceirizadosContratoActivity.this, TerceirizadoActivity.class);
+        intent.putExtra("stIdeContrato", ideContrato.toString());
         intent.putExtra("stIdeTerceirizado", terceirizado.getIdeTerceirizado().toString());
         intent.putExtra("stNomTerceirizado", terceirizado.getNomTerceirizado());
         intent.putExtra("stNumCPF", terceirizado.getNumCPF());
         intent.putExtra("stCodSexo",terceirizado.getCodSexo());
-        intent.putExtra("dtDatNascimento",terceirizado.getDatNascimento().toString()); // Formato ISO
+        intent.putExtra("stDatNascimento", Data.dateToIso(terceirizado.getDatNascimento())); // Formato ISO
+        intent.putExtra("stDesEmail",terceirizado.getDesEmail());
 
 
         startActivity(intent);

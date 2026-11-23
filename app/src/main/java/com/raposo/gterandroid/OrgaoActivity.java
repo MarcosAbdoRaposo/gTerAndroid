@@ -16,6 +16,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.raposo.gterandroid.client.RetrofitClient;
 import com.raposo.gterandroid.model.Orgao;
 import com.raposo.gterandroid.service.OrgaoService;
@@ -33,6 +34,7 @@ public class OrgaoActivity extends AppCompatActivity {
 
     private ListView lvOrgaoOrgaos;
 
+    private MaterialToolbar mtbOrgaoCabecalho;
     private ArrayAdapter<Orgao> adapter;
 
     private  List<Orgao> listaOrgaos;
@@ -48,13 +50,17 @@ public class OrgaoActivity extends AppCompatActivity {
             return insets;
         });
 
+        // Aponta para os caomponentes
         lvOrgaoOrgaos = findViewById(R.id.lvOrgaoOrgaos);
+        mtbOrgaoCabecalho = findViewById(R.id.mtbOrgaoCabecalho);
 
-
+        // Aponta para o serviço
         orgaoService = RetrofitClient.getRetrofit().create(OrgaoService.class);
 
-        listarOrgaos();
-        // Clique Simples: Edição
+        listarOrgaos(); // Carrega o ListView com os Orgãos
+
+
+        // Clique Simples no List View, vai chamar a tela de Contratos do Orgao
         lvOrgaoOrgaos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -63,6 +69,12 @@ public class OrgaoActivity extends AppCompatActivity {
                 telaContratosOrgao(orgaoSelecionado);
             }
         });
+
+        // Manda para tela anterior
+        mtbOrgaoCabecalho.setNavigationOnClickListener(v->
+                getOnBackPressedDispatcher().onBackPressed()
+                );
+
 
 
 

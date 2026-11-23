@@ -10,7 +10,7 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/mtbTercCabecalho"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
@@ -20,16 +20,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="Terceirizado"
         app:titleCentered="true"
-        app:titleTextColor="#FFFFFF" />
+        app:titleTextColor="#FFFFFF"
+        app:navigationIcon="@drawable/ic_arrow_back_24"
+        app:navigationContentDescription="Voltar"
+        app:navigationIconTint="@android:color/white" />
 
     <ScrollView
-        android:id="@+id/tercSvFormulario"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/tercLLRodape"
+        android:id="@+id/svTercFormulario"
+        android:layout_width="396dp"
+        android:layout_height="384dp"
+        app:layout_constraintBottom_toTopOf="@+id/lvTercPostosTrabalho"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mtbTercCabecalho">
+        app:layout_constraintTop_toBottomOf="@+id/mtbTercCabecalho"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintVertical_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,7 +59,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tercTILCpf"
+                android:id="@+id/tilTercNumCpf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="CPF">
@@ -68,7 +73,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tercTIlDataNascimento"
+                android:id="@+id/tilTercDataNascimento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Data de Nascimento">
@@ -85,8 +90,8 @@
                 style="?attr/materialCardViewOutlinedStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:strokeColor="#79747E"
+                android:layout_marginTop="8dp"
+                app:strokeColor="?attr/colorOutline"
                 app:strokeWidth="1dp">
 
                 <LinearLayout
@@ -100,16 +105,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Sexo"
-                        android:textColor="?attr/colorPrimary"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
+                        android:textAppearance="?attr/textAppearanceTitleSmall"
+                        android:textColor="?attr/colorPrimary" />
 
                     <RadioGroup
                         android:id="@+id/rgTercCodSexo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:accessibilityPaneTitle="Selecione o sexo"
+                        android:layout_marginTop="8dp"
                         android:orientation="horizontal">
 
                         <RadioButton
@@ -117,6 +120,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:tag="M"
                             android:text="Masculino" />
 
                         <RadioButton
@@ -124,6 +128,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:tag="F"
                             android:text="Feminino" />
                     </RadioGroup>
                 </LinearLayout>
@@ -142,11 +147,26 @@
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
+
         </LinearLayout>
     </ScrollView>
 
+    <ListView
+        android:id="@+id/lvTercPostosTrabalho"
+        android:layout_width="0dp"
+        android:layout_height="180dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:nestedScrollingEnabled="true"
+        app:layout_constraintBottom_toTopOf="@+id/llTercRodape"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/svTercFormulario" />
+
     <LinearLayout
-        android:id="@+id/tercLLRodape"
+        android:id="@+id/llTercRodape"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -155,7 +175,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
-            android:id="@+id/tercBtCancelar"
+            android:id="@+id/btTercCancelar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -163,7 +183,7 @@
             android:text="Cancelar" />
 
         <Button
-            android:id="@+id/tercBtSalvar"
+            android:id="@+id/btTercSalvar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

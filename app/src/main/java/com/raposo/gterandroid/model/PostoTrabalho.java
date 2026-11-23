@@ -29,6 +29,11 @@ public class PostoTrabalho {
         this.qtdPostoTrabalho = qtdPostoTrabalho;
     }
 
+    @Override
+    public String toString() {
+        return this.nomPostoTrabalho != null ? this.nomPostoTrabalho : "";
+    }
+
     public String getIdePostoTrabalho() {
         return idePostoTrabalho;
     }

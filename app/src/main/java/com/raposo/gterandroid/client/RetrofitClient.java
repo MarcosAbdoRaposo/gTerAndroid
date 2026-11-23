@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.UUID;
 public class RetrofitClient {
 
-    private static final String URL_BASE = "https://literate-space-potato-5gpvwqr95rxw3vq9v-8080.app.github.dev/gter/";
+    private static final String URL_BASE = "https://ideal-barnacle-pjq7xrw69pjjh9664-8080.app.github.dev/gter/";
     //private static final String URL_BASE = "http://192.168.0.5:8080/gter/";
     private static Retrofit retrofit;
 

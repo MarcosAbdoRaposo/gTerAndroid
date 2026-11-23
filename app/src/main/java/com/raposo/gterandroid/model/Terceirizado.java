@@ -83,6 +83,14 @@ public class Terceirizado {
         return numCPF;
     }
 
+    public String getNumCPFFormatado() {
+        if (this.numCPF == null) {
+            return null;
+        } else {
+            return this.numCPF.substring(0, 3) + "." + this.numCPF.substring(3, 6) + "." + this.numCPF.substring(6, 9) + "-" + this.numCPF.substring(9, 11);
+        }
+    }
+
     public void setNumCPF(String numCPF) {
         this.numCPF = numCPF;
     }

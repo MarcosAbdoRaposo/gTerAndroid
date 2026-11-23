@@ -13,10 +13,10 @@ public interface PostoTrabalhoService {
     Call<List<PostoTrabalho>> listarTodos();
 
     @GET("postotrabalho/contrato/{ideContrato}")
-    Call<List<PostoTrabalho>> listarPostoTrabalhoContrato(@Path("ideContrato") UUID ideContrato);
+    Call<List<PostoTrabalho>> listarPostoTrabalhoContrato(@Path("ideContrato") String ideContrato);
 
     @GET("postotrabalho/{idePostoTrabalho}")
-    Call<PostoTrabalho> buscarPorId(@Path("idePostoTrabalho") UUID idePostoTrabalho);
+    Call<PostoTrabalho> buscarPorId(@Path("idePostoTrabalho") String idePostoTrabalho);
 
     @POST("postotrabalho")
     Call<PostoTrabalho> incluir(@Body PostoTrabalho postoTrabalho);
@@ -25,5 +25,5 @@ public interface PostoTrabalhoService {
     Call<PostoTrabalho> atualizar(@Body PostoTrabalho postoTrabalhoAtualizado);
 
     @DELETE("postotrabalho/{idePostoTrabalho}")
-    Call<Void> excluir(@Path("idePostoTrabalho") UUID idePostoTrabalho);
+    Call<Void> excluir(@Path("idePostoTrabalho") String idePostoTrabalho);
 }

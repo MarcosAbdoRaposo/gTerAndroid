@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Camada 1: Borda e fundo -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/white" />
+            <stroke
+                android:width="1dp"
+                android:color="#BDBDBD" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+
+    <!-- Camada 2: Seta alinhada à direita/fim -->
+    <item
+        android:width="24dp"
+        android:height="24dp"
+        android:end="12dp"
+        android:gravity="end|center_vertical"
+        android:drawable="@drawable/ic_arrow_drop_down"
+    />
+
+</layer-list>

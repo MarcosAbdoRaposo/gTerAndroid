@@ -16,6 +16,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.raposo.gterandroid.client.RetrofitClient;
 import com.raposo.gterandroid.model.Contrato;
 import com.raposo.gterandroid.model.Orgao;
@@ -34,6 +35,7 @@ public class ContratoActivity extends AppCompatActivity {
     private ContratoService contratoService;
 
     private ListView lvContrContratos;
+    private MaterialToolbar mtbContrCabecalho;
 
     private ArrayAdapter<Contrato> adapter;
 
@@ -54,7 +56,11 @@ public class ContratoActivity extends AppCompatActivity {
             return insets;
         });
 
+        // aponta para os componentes
         lvContrContratos = findViewById(R.id.lvContrContratos);
+        mtbContrCabecalho = findViewById(R.id.mtbContrCabecalho);
+
+
 
         contratoService = RetrofitClient.getRetrofit().create(ContratoService.class);
 
@@ -63,13 +69,15 @@ public class ContratoActivity extends AppCompatActivity {
         ideOrgao = UUID.fromString(getIntent().getStringExtra("stIdeOrgao"));
         nomOrgao = getIntent().getStringExtra("stNomOrgao");
 
-        //if (ideOrgao == null) {
-        //    Toast.makeText(this, "ideOrgao está nulo",Toast.LENGTH_LONG).show();
-        //} else {
-        //    Toast.makeText(this, "ideOrgao:" + ideOrgao.toString(),Toast.LENGTH_LONG).show();
-        //}
+        // Carrega o Nome do Orgão no Cabecalho
+
+        mtbContrCabecalho.setSubtitle(nomOrgao);
+        mtbContrCabecalho.setSubtitleCentered(true);
+
+        // Lista os Contratos do Orgão
         listarContratos(ideOrgao);
-        // Clique Simples: Edição
+
+        // Se clicar em uma linah do ListView chama a Tela de Terceirizados do Contrato
         lvContrContratos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -78,6 +86,12 @@ public class ContratoActivity extends AppCompatActivity {
                 telaTerceirizadosContrato(contratoSelecionado);
             }
         });
+
+
+        // Manda para tela anterior
+        mtbContrCabecalho.setNavigationOnClickListener(v->
+                getOnBackPressedDispatcher().onBackPressed()
+        );
     }
 
     // Carrega o listView com os cotratos deste Orgao
