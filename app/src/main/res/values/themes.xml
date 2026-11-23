@@ -6,4 +6,15 @@
     </style>
 
     <style name="Theme.GTerAndroid" parent="Base.Theme.GTerAndroid" />
+
+    <style name="ThemeOverlay.Gter.ToolbarOverflowWhite" parent="ThemeOverlay.Material3.Dark.ActionBar">
+        <!-- Cor dos 3 pontinhos e dos ícones de ação da toolbar -->
+        <item name="colorControlNormal">@android:color/white</item>
+        <!-- Opcional: mantém o menu suspenso com fundo claro e texto escuro -->
+        <item name="android:colorBackground">@android:color/white</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+    </style>
+
+
+
 </resources>

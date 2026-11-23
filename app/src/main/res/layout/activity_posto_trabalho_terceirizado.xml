@@ -23,7 +23,9 @@
         app:title="Posto de Trabalho"
         app:titleCentered="true"
         app:titleTextColor="?attr/colorOnPrimary"
-        app:menu="@menu/menu_posto_trabalho_terceirizado"/>
+        app:menu="@menu/menu_posto_trabalho_terceirizado"
+        app:theme="@style/ThemeOverlay.Gter.ToolbarOverflowWhite"
+        app:popupTheme="@style/ThemeOverlay.Gter.ToolbarOverflowWhite" />
 
     <ScrollView
         android:id="@+id/svPtbFormulario"

@@ -26,6 +26,7 @@ import com.raposo.gterandroid.components.Data;
 import com.raposo.gterandroid.model.Ocupa;
 import com.raposo.gterandroid.model.Terceirizado;
 import com.raposo.gterandroid.service.OcupaService;
+import com.raposo.gterandroid.util.CampoEditavel;
 import com.raposo.gterandroid.util.DateUtils;
 
 import java.time.LocalDate;
@@ -48,8 +49,9 @@ public class TerceirizadoActivity extends AppCompatActivity {
     private ArrayAdapter<Ocupa> adapter;
 
     // Utilizado para salvar os KeyListene dos campos que serão colocados como Somente Leitura
-    private final Map<TextInputEditText, KeyListener> keyListenersOriginais = new HashMap<>();
+    //private final Map<TextInputEditText, KeyListener> keyListenersOriginais = new HashMap<>();
 
+    private final CampoEditavel campoEditavel = new CampoEditavel();
     private MaterialToolbar mtbTercCabecalho;
     private TextInputEditText etTercNomTerceirizado;
     private TextInputEditText etTercNumCpf;
@@ -162,16 +164,15 @@ public class TerceirizadoActivity extends AppCompatActivity {
         // Deixa os campos somente leitura
 
         // Salva os KeyListener dos campos Text
-        registrarKeyListener(etTercNomTerceirizado);
-        registrarKeyListener(etTercNumCpf);
-        registrarKeyListener(etTercDataNascimento);
-        registrarKeyListener(etTercDesEmail);
+        campoEditavel.registrarKeyListeners(
+                etTercNomTerceirizado,
+                etTercNumCpf,
+                etTercDataNascimento,
+                etTercDesEmail
+        );
 
         // Deiza a Tela não editavel
         definirModoEdicao(false);
-
-
-
 
         btTercCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -312,49 +313,13 @@ public class TerceirizadoActivity extends AppCompatActivity {
         });
     }
 
-
-
-    private void registrarKeyListener(TextInputEditText editText) {
-        if (editText.getKeyListener() != null) {
-            keyListenersOriginais.put(editText, editText.getKeyListener());
-        }
-    }
-
-    private void setCampoEditavel(TextInputEditText editText, boolean editavel) {
-        editText.setFocusable(editavel);
-        editText.setFocusableInTouchMode(editavel);
-        editText.setClickable(editavel);
-        editText.setLongClickable(editavel);
-        editText.setCursorVisible(editavel);
-
-        if (editavel) {
-            KeyListener listenerOriginal = keyListenersOriginais.get(editText);
-            if (listenerOriginal != null) {
-                editText.setKeyListener(listenerOriginal);
-            }
-        } else {
-            editText.setKeyListener(null);
-        }
-    }
-
-    private void setRadioGroupEditavel(RadioGroup radioGroup, boolean editavel) {
-        radioGroup.setEnabled(editavel);
-        for (int i = 0; i < radioGroup.getChildCount(); i++) {
-            View child = radioGroup.getChildAt(i);
-            child.setEnabled(editavel);
-            child.setClickable(editavel);
-            child.setFocusable(editavel);
-            child.setOnTouchListener(editavel ? null : (v, event) -> true);
-        }
-    }
-
     private void definirModoEdicao(boolean editavel) {
-        setCampoEditavel(etTercNomTerceirizado, editavel);
-        setCampoEditavel(etTercNumCpf, editavel);
-        setCampoEditavel(etTercDataNascimento, editavel);
-        setCampoEditavel(etTercDesEmail, editavel);
+        campoEditavel.setCampoEditavel(etTercNomTerceirizado, editavel);
+        campoEditavel.setCampoEditavel(etTercNumCpf, editavel);
+        campoEditavel.setCampoEditavel(etTercDataNascimento, editavel);
+        campoEditavel.setCampoEditavel(etTercDesEmail, editavel);
 
-        setRadioGroupEditavel(rgTercCodSexo, editavel);
+        campoEditavel.setRadioGroupEditavel(rgTercCodSexo, editavel);
 
     }
 

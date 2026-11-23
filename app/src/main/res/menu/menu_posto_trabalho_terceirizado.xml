@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/action_atualizar"
-        android:title="Desmibilizar"
-        android:icon="@android:drawable/ic_popup_sync"
-        app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/action_ajuda"
-        android:title="Ajuda"
+        android:id="@+id/action_alterar"
+        android:title="Alterar"
+        android:icon="@drawable/ic_edit_24"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_desmobilizar"
+        android:title="Desmobilizar"
+        android:icon="@drawable/ic_person_off_24"
         app:showAsAction="never" />
 
 </menu>
