@@ -264,9 +264,10 @@ public class InclusaoTerceirizadoActivity extends AppCompatActivity {
     }
 
     private void salvarTerceirizado() {
-        String stNumCpf = etIncTercNumCpf.getText() != null
-                ? etIncTercNumCpf.getText().toString().trim().replaceAll("[.-]","")
+        String stNumCpfComMascara = etIncTercNumCpf.getText() != null
+                ? etIncTercNumCpf.getText().toString().trim()
                 : "";
+        String stNumCpf = stNumCpfComMascara.replaceAll("[.-]","");
         String stNomTerceirizado = etIncTercNomTerceirizado.getText() != null
                 ? etIncTercNomTerceirizado.getText().toString().trim()
                 : "";
