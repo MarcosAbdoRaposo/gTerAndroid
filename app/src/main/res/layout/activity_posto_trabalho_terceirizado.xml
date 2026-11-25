@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".PostoTrabalhoTerceirizadoActivity">
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -17,19 +18,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/menu_posto_trabalho_terceirizado"
         app:navigationContentDescription="Voltar"
         app:navigationIcon="@drawable/ic_arrow_back_24"
         app:navigationIconTint="?attr/colorOnPrimary"
+        app:popupTheme="@style/ThemeOverlay.Gter.ToolbarOverflowWhite"
+        app:subtitleTextColor="#FFFFFF"
+        app:theme="@style/ThemeOverlay.Gter.ToolbarOverflowWhite"
         app:title="Posto de Trabalho"
         app:titleCentered="true"
-        app:titleTextColor="?attr/colorOnPrimary"
-        app:menu="@menu/menu_posto_trabalho_terceirizado"
-        app:theme="@style/ThemeOverlay.Gter.ToolbarOverflowWhite"
-        app:popupTheme="@style/ThemeOverlay.Gter.ToolbarOverflowWhite" />
+        app:titleTextColor="?attr/colorOnPrimary" />
 
     <ScrollView
         android:id="@+id/svPtbFormulario"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
 
 
@@ -49,8 +51,11 @@
                 android:id="@+id/spnPtbPostoTrabalho"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="48dp"
-                android:background="@drawable/bg_spinner_borda_seta" />
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_spinner_borda_seta"
+                android:minHeight="48dp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilPtbDatInicio"
@@ -61,7 +66,14 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPtbDatInicio"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -73,14 +85,23 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPtbDatFim"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.card.MaterialCardView
                 style="?attr/materialCardViewOutlinedStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 app:strokeColor="?attr/colorOutline"
                 app:strokeWidth="1dp">
 
@@ -128,7 +149,9 @@
                 android:id="@+id/tilPtbLotacao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:hint="Lotação">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -141,13 +164,16 @@
                 android:id="@+id/tilPtbLocalTrabalho"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:hint="Local de Trabalho">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPtbDesLocalizacao"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                     />
             </com.google.android.material.textfield.TextInputLayout>
 
 

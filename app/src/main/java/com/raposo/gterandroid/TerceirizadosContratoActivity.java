@@ -17,6 +17,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.raposo.gterandroid.client.RetrofitClient;
 import com.raposo.gterandroid.components.Data;
 import com.raposo.gterandroid.model.Contrato;
@@ -38,6 +39,7 @@ public class TerceirizadosContratoActivity extends AppCompatActivity {
     private ListView lvTerContTerceirizados;
 
     private MaterialToolbar mtbTerContCabecalho;
+    private FloatingActionButton fabTerContAdicionarTerceirizado;
 
     private ArrayAdapter<Terceirizado> adapter;
 
@@ -59,11 +61,15 @@ public class TerceirizadosContratoActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        // Cria o Serviço
+        terceirizadoService = RetrofitClient.getRetrofit().create(TerceirizadoService.class);
 
+        // Mapeia os componentes da Tela
         lvTerContTerceirizados = findViewById(R.id.lvTerContTerceirizados);
         mtbTerContCabecalho = findViewById(R.id.mtbTerContCabecalho);
+        fabTerContAdicionarTerceirizado = findViewById(R.id.fabTercAdicionarTerceirizado);
 
-        terceirizadoService = RetrofitClient.getRetrofit().create(TerceirizadoService.class);
+
 
         // Obtem os valores passados na Intent Orgao
 
@@ -78,9 +84,9 @@ public class TerceirizadosContratoActivity extends AppCompatActivity {
         mtbTerContCabecalho.setSubtitle(nomFornecedor);
         mtbTerContCabecalho.setSubtitleCentered(true);
 
-        // Lista os Terceirizados
 
-        listarTerceirizados(ideContrato);
+
+
 
         // Associa evento de selecionar no ListView
         lvTerContTerceirizados.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -96,6 +102,22 @@ public class TerceirizadosContratoActivity extends AppCompatActivity {
         mtbTerContCabecalho.setNavigationOnClickListener(v->
                 getOnBackPressedDispatcher().onBackPressed()
         );
+
+        // FAB
+        fabTerContAdicionarTerceirizado.setOnClickListener(v -> abrirTelaInclusaoTerceirizado());
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        listarTerceirizados(ideContrato);  // Lista os Terceirizados
+    }
+
+    private void abrirTelaInclusaoTerceirizado() {
+        Intent intent = new Intent(TerceirizadosContratoActivity.this, InclusaoTerceirizadoActivity.class);
+        intent.putExtra("stIdeContrato", ideContrato.toString());
+        startActivity(intent);
     }
 
 

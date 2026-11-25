@@ -13,7 +13,7 @@ public interface OcupaService {
     Call<List<Ocupa>> listarTodas();
 
     @GET("ocupa/{ideOcupa}")
-    Call<Ocupa> buscarPorId(@Path("id") String ideOcupa);
+    Call<Ocupa> buscarPorId(@Path("ideOcupa") String ideOcupa);
 
     @GET("ocupa/terceirizado/{ideTerceirizado}")
     Call<List<Ocupa>> buscarPorTerceirizado(@Path("ideTerceirizado") String ideTerceirizado);
@@ -30,9 +30,9 @@ public interface OcupaService {
     @POST("ocupa")
     Call<Ocupa> salvar(@Body Ocupa ocupa);
 
-    @PUT("ocupa/{id}")
-    Call<Ocupa> atualizar(@Path("id") String id, @Body Ocupa ocupa);
+    @PUT("ocupa/{ideOcupa}")
+    Call<Ocupa> atualizar(@Path("ideOcupa") String ideOcupa, @Body Ocupa ocupa);
 
-    @DELETE("ocupa/{id}")
-    Call<Void> deletar(@Path("id") String id);
+    @DELETE("ocupa/{ideOcupa}")
+    Call<Void> deletar(@Path("ideOcupa") String ideOcupa);
 }

@@ -69,4 +69,15 @@ public class CampoEditavel {
         spinner.setFocusableInTouchMode(false); // Spinner normalmente não usa foco de digitação
         spinner.setOnTouchListener(editavel ? null : (v, event) -> true);
     }
+
+    public void setCampoData(TextInputEditText editText, boolean habilitadoParaSelecionar) {
+        if (editText == null) return;
+
+        editText.setFocusable(false);
+        editText.setFocusableInTouchMode(false);
+        editText.setCursorVisible(false);
+        editText.setKeyListener(null);
+        editText.setClickable(habilitadoParaSelecionar);
+        editText.setLongClickable(false);
+    }
 }

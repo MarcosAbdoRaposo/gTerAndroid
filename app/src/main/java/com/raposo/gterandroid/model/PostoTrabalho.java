@@ -22,6 +22,10 @@ public class PostoTrabalho {
     public PostoTrabalho() {
     }
 
+    public PostoTrabalho(String idePostoTrabalho) {
+        this.idePostoTrabalho = idePostoTrabalho;
+    }
+
     public PostoTrabalho(String idePostoTrabalho, Contrato contrato, String nomPostoTrabalho, int qtdPostoTrabalho) {
         this.idePostoTrabalho = idePostoTrabalho;
         this.contrato = contrato;

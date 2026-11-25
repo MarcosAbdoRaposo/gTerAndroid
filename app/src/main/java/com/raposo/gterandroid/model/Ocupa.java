@@ -28,22 +28,24 @@ public class Ocupa {
     private Date datFim;
 
     @Json(name = "desLotacao")
-    private Date desLotacao;
+    private String desLotacao;
 
     @Json(name = "desLocalizacao")
-    private Date desLocalizacao;
+    private String desLocalizacao;
 
 
     public Ocupa() {
     }
 
-    public Ocupa(String ideOcupa, Terceirizado terceirizado, PostoTrabalho postoTrabalho, String codSituacao, Date datInicio, Date datFim) {
+    public Ocupa(String ideOcupa, Terceirizado terceirizado, PostoTrabalho postoTrabalho, String codSituacao, Date datInicio, Date datFim, String desLotacao, String desLocalizacao) {
         this.ideOcupa = ideOcupa;
         this.terceirizado = terceirizado;
         this.postoTrabalho = postoTrabalho;
         this.codSituacao = codSituacao;
         this.datInicio = datInicio;
         this.datFim = datFim;
+        this.desLotacao = desLotacao;
+        this.desLocalizacao = desLocalizacao;
     }
 
     public String getIdeOcupa() {
@@ -113,19 +115,19 @@ public class Ocupa {
     }
 
 
-    public Date getDesLotacao() {
+    public String getDesLotacao() {
         return desLotacao;
     }
 
-    public void setDesLotacao(Date desLotacao) {
+    public void setDesLotacao(String desLotacao) {
         this.desLotacao = desLotacao;
     }
 
-    public Date getDesLocalizacao() {
+    public String getDesLocalizacao() {
         return desLocalizacao;
     }
 
-    public void setDesLocalizacao(Date desLocalizacao) {
+    public void setDesLocalizacao(String desLocalizacao) {
         this.desLocalizacao = desLocalizacao;
     }
 }

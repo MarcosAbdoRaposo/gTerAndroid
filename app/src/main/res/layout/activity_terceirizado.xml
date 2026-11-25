@@ -23,7 +23,10 @@
         app:titleTextColor="#FFFFFF"
         app:navigationIcon="@drawable/ic_arrow_back_24"
         app:navigationContentDescription="Voltar"
-        app:navigationIconTint="@android:color/white" />
+        app:navigationIconTint="@android:color/white"
+        app:menu="@menu/menu_terceirizado"
+        app:theme="@style/ThemeOverlay.Gter.ToolbarOverflowWhite"
+        app:popupTheme="@style/ThemeOverlay.Gter.ToolbarOverflowWhite"/>
 
     <ScrollView
         android:id="@+id/svTercFormulario"
@@ -82,8 +85,11 @@
                     android:id="@+id/etTercDataNascimento"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="date"
-                    android:maxLength="10" />
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="none" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.card.MaterialCardView
@@ -188,6 +194,17 @@
             android:layout_marginStart="4dp"
             android:text="Salvar" />
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabTercAdicionarPosto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="Adicionar posto de trabalho"
+        app:layout_constraintBottom_toTopOf="@+id/llTercRodape"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_input_add" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

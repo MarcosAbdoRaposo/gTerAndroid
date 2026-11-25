@@ -48,6 +48,10 @@ public class Terceirizado {
     public Terceirizado() {
     }
 
+    public Terceirizado(String ideTerceirizado) {
+        this.ideTerceirizado = ideTerceirizado;
+    }
+
     public Terceirizado(String ideTerceirizado, String nomTerceirizado, String numCPF, Date datNascimento, String codSexo, String nomLogradouro, String nomBairro, String nomCidade, String sigUF, String nomPais, String numCep, String desEmail) {
         this.ideTerceirizado = ideTerceirizado;
         this.nomTerceirizado = nomTerceirizado;
